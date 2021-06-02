@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "873004975507",
+    "project_id": "uassafira",
+    "storage_bucket": "uassafira.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873004975507:android:ca8c7940fd078061711466",
+        "android_client_info": {
+          "package_name": "com.example.uas_safira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873004975507-eg525j1jns4ntmqn39nqj412d12jhshp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uas_safira",
+            "certificate_hash": "2ce9cc2d742abb4262db404cf4f75b7067fba3dd"
+          }
+        },
+        {
+          "client_id": "873004975507-tmsk2r6ctrqn9tgjs17tdbviu1phsi86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcgSmJJ21NC0ATXqZTQxbfhitYnOYKNdA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873004975507-tmsk2r6ctrqn9tgjs17tdbviu1phsi86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
