@@ -48,6 +48,7 @@ class KategoriProvider with ChangeNotifier {
 
   //read
   loadValues(Kategori kategori) {
+    _kategoriId = kategori.kategoriId;
     _kode = kategori.kode;
     _nama = kategori.nama;
     _stok = kategori.stok;
@@ -70,11 +71,11 @@ class KategoriProvider with ChangeNotifier {
     } else {
       //Update
       var updatedKategori = Kategori(
-          kode: kode,
-          nama: nama,
-          stok: stok,
-          ukuran: ukuran,
-          warna: warna,
+          kode: _kode,
+          nama: _nama,
+          stok: _stok,
+          ukuran: _ukuran,
+          warna: _warna,
           kategoriId: _kategoriId);
       firestoreService.saveKategori(updatedKategori);
     }

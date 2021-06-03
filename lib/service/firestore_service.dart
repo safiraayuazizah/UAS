@@ -36,6 +36,6 @@ class FirestoreService {
   }
 
   Future<void> removeKategori(String kategoriId) {
-    return _db.collection('kategori').doc(kategoriId).delete();
+    return _db.collection('kategoris').doc(kategoriId).delete();
   }
 }

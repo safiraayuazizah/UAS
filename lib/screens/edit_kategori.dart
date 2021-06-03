@@ -66,7 +66,11 @@ class _EditKategoriState extends State<EditKategori> {
     final kategoriProvider = Provider.of<KategoriProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Edit Siswa')),
+      appBar: AppBar(
+        title: Text('Edit Kategori'),
+        backgroundColor: Colors.grey.shade400,
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(

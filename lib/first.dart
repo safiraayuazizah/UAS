@@ -4,7 +4,7 @@ import 'package:uas_safira/items.dart';
 import 'package:uas_safira/kategoris.dart';
 import 'package:uas_safira/login_page.dart';
 
-void main() => runApp(First());
+// void main() => runApp(First());
 
 class First extends StatelessWidget {
   static String _title = 'Drawer Example';
@@ -12,20 +12,31 @@ class First extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: 400,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/images/my.png'),
-          //fit: BoxFit.contain,
-        )),
-        child: const Text('Selamat Datang !',
-            style: TextStyle(
-              color: Color.fromRGBO(0, 0, 0, 1),
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
-            )),
+      body: Center(
+        child: Column(
+          // child: Center(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 400,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/images/my.png'),
+                //fit: BoxFit.contain,
+              )),
+              //   child: Center(
+              child: Text('Selamat Datang !',
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  )),
+            ),
+          ],
+        ),
       ),
+      //   ),
       appBar: AppBar(
         title: Text('Admin My ShoeBett'),
         backgroundColor: Colors.grey,

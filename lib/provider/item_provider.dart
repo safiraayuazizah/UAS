@@ -27,6 +27,7 @@ class ItemProvider with ChangeNotifier {
 
   //read
   loadValues(Item item) {
+    _itemId = item.itemId;
     _kode = item.kode;
     _merk = item.merk;
   }
@@ -39,7 +40,7 @@ class ItemProvider with ChangeNotifier {
       firestoreService.saveItem(newItem);
     } else {
       //Update
-      var updatedItem = Item(kode: kode, merk: merk, itemId: _itemId);
+      var updatedItem = Item(kode: _kode, merk: _merk, itemId: _itemId);
       firestoreService.saveItem(updatedItem);
     }
   }

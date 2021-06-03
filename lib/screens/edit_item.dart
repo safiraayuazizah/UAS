@@ -52,7 +52,11 @@ class _EditItemState extends State<EditItem> {
     final itemProvider = Provider.of<ItemProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Edit Item')),
+      appBar: AppBar(
+        title: Text('Edit Item'),
+        backgroundColor: Colors.grey.shade400,
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
