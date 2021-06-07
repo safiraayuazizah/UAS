@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: 400,
+                height: 200,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   image: AssetImage('assets/images/my.png'),
@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 30,
                     )),
               ),
-
+              _formLogin(),
               _signInButton(),
 
               // FlutterLogo(size: 150),
@@ -48,116 +48,116 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // Widget _formLogin() {
-  //   return Form(
-  //     key: _formKey,
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: <Widget>[
-  //         Container(
-  //           child: const Text('Admin My Shoebett',
-  //               style: TextStyle(
-  //                 color: Color.fromRGBO(0, 0, 0, 1),
-  //                 fontWeight: FontWeight.bold,
-  //                 fontSize: 30,
-  //               )),
-  //           padding: const EdgeInsets.all(10),
-  //           alignment: Alignment.center,
-  //         ),
-  //         Container(
-  //           child: const Text('Sign in with email and password'),
-  //           padding: const EdgeInsets.all(10),
-  //           alignment: Alignment.center,
-  //         ),
-  //         Container(
-  //           width: 350,
-  //           padding: const EdgeInsets.all(20),
-  //           alignment: Alignment.center,
-  //           child: TextFormField(
-  //             controller: emailController,
-  //             decoration: const InputDecoration(
-  //               icon: Icon(Icons.mail),
-  //               labelText: 'Email',
-  //             ),
-  //             validator: (String value) {
-  //               if (value.isEmpty) {
-  //                 return 'Please enter some text';
-  //               }
-  //               return null;
-  //             },
-  //           ),
-  //         ),
-  //         Container(
-  //           width: 350,
-  //           padding: const EdgeInsets.all(20),
-  //           alignment: Alignment.center,
-  //           child: TextFormField(
-  //             controller: passwordController,
-  //             obscureText: true,
-  //             decoration: const InputDecoration(
-  //               icon: Icon(Icons.vpn_key),
-  //               labelText: 'Password',
-  //             ),
-  //             validator: (String value) {
-  //               if (value.isEmpty) {
-  //                 return 'Please enter some text';
-  //               }
-  //               return null;
-  //             },
-  //           ),
-  //         ),
-  //         Container(
-  //           padding: const EdgeInsets.symmetric(vertical: 5.0),
-  //           alignment: Alignment.center,
-  //           child: OutlineButton(
-  //             splashColor: Colors.black,
-  //             color: Colors.blueGrey,
-  //             onPressed: () {
-  //               if (_formKey.currentState.validate()) {
-  //                 signInWithEmailAndPassword(
-  //                         emailController.text, passwordController.text)
-  //                     .then((result) {
-  //                   if (result != null) {
-  //                     Navigator.of(context).push(
-  //                       MaterialPageRoute(
-  //                         builder: (context) {
-  //                           return First();
-  //                         },
-  //                       ),
-  //                     );
-  //                   }
-  //                 });
-  //               }
-  //             },
-  //             shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(40)),
-  //             highlightElevation: 0,
-  //             borderSide: BorderSide(color: Colors.black),
-  //             child: Padding(
-  //               padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-  //               child: Row(
-  //                 mainAxisSize: MainAxisSize.min,
-  //                 mainAxisAlignment: MainAxisAlignment.center,
-  //                 children: <Widget>[
-  //                   Padding(
-  //                     padding: const EdgeInsets.only(left: 10),
-  //                     child: Text(
-  //                       'Login',
-  //                       style: TextStyle(
-  //                         fontSize: 20,
-  //                         color: Colors.black,
-  //                       ),
-  //                     ),
-  //                   )
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+  Widget _formLogin() {
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            child: const Text('Admin My Shoebett',
+                style: TextStyle(
+                  color: Color.fromRGBO(0, 0, 0, 1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                )),
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+          ),
+          Container(
+            child: const Text('Sign in with email and password'),
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+          ),
+          Container(
+            width: 350,
+            padding: const EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: TextFormField(
+              controller: emailController,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.mail),
+                labelText: 'Email',
+              ),
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+          ),
+          Container(
+            width: 350,
+            padding: const EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: TextFormField(
+              controller: passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.vpn_key),
+                labelText: 'Password',
+              ),
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            alignment: Alignment.center,
+            child: OutlineButton(
+              splashColor: Colors.black,
+              color: Colors.blueGrey,
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  signInWithEmailAndPassword(
+                          emailController.text, passwordController.text)
+                      .then((result) {
+                    if (result != null) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return First();
+                          },
+                        ),
+                      );
+                    }
+                  });
+                }
+              },
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40)),
+              highlightElevation: 0,
+              borderSide: BorderSide(color: Colors.black),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _signInButton() {
     return OutlineButton(
