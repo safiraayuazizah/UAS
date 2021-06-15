@@ -1,41 +1,42 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uas_safira/models/item.dart';
 import 'package:uas_safira/models/kategori.dart';
+import 'package:uas_safira/sign_in.dart';
 
 class FirestoreService {
-  FirebaseFirestore _db = FirebaseFirestore.instance;
+  CollectionReference _dbitem = FirebaseFirestore.instance.collection('items');
+  CollectionReference _dbkategori =
+      FirebaseFirestore.instance.collection('kategoris');
 
   //item
   Future<void> saveItem(Item item) {
-    return _db.collection('items').doc(item.itemId).set(item.toMap());
+    return _dbitem.doc(item.itemId).set(item.toMap());
   }
 
   Stream<List<Item>> getItems() {
-    return _db.collection('items').snapshots().map((snapshot) => snapshot.docs
-        .map((document) => Item.fromFirestore(document.data()))
-        .toList());
+    return _dbitem.where('userId', isEqualTo: uid).snapshots().map((snapshot) =>
+        snapshot.docs
+            .map((document) => Item.fromFirestore(document.data()))
+            .toList());
   }
 
   Future<void> removeItem(String itemId) {
-    return _db.collection('items').doc(itemId).delete();
+    return _dbitem.doc(itemId).delete();
   }
 
   //kategori
   Future<void> saveKategori(Kategori kategori) {
-    return _db
-        .collection('kategoris')
-        .doc(kategori.kategoriId)
-        .set(kategori.toMap());
+    return _dbkategori.doc(kategori.kategoriId).set(kategori.toMap());
   }
 
   Stream<List<Kategori>> getKategoris() {
-    return _db.collection('kategoris').snapshots().map((snapshot) => snapshot
-        .docs
-        .map((document) => Kategori.fromFirestore(document.data()))
-        .toList());
+    return _dbkategori.where('userId', isEqualTo: uid).snapshots().map(
+        (snapshot) => snapshot.docs
+            .map((document) => Kategori.fromFirestore(document.data()))
+            .toList());
   }
 
   Future<void> removeKategori(String kategoriId) {
-    return _db.collection('kategoris').doc(kategoriId).delete();
+    return _dbkategori.doc(kategoriId).delete();
   }
 }

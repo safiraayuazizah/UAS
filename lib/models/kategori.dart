@@ -5,13 +5,16 @@ class Kategori {
   final int stok;
   final int ukuran;
   final String warna;
+  final String userId;
+
   Kategori(
       {this.kategoriId,
       this.kode,
       this.nama,
       this.stok,
       this.ukuran,
-      this.warna});
+      this.warna,
+      this.userId});
 
   Map<String, dynamic> toMap() {
     return {
@@ -20,7 +23,8 @@ class Kategori {
       'nama': nama,
       'stok': stok,
       'ukuran': ukuran,
-      'warna': warna
+      'warna': warna,
+      'userId': userId
     };
   }
 
@@ -30,5 +34,6 @@ class Kategori {
         nama = firestore['nama'],
         stok = firestore['stok'],
         ukuran = firestore['ukuran'],
-        warna = firestore['warna'];
+        warna = firestore['warna'],
+        userId = firestore['userId'];
 }

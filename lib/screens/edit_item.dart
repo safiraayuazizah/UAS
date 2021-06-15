@@ -4,18 +4,22 @@ import 'package:provider/provider.dart';
 import 'package:uas_safira/provider/item_provider.dart';
 
 class EditItem extends StatefulWidget {
-  final Item item;
+  Item item;
+  final String idItem;
+  final String kode;
+  final String merk;
 
-  EditItem([this.item]);
-
+  EditItem(this.idItem, this.kode, this.merk);
   @override
-  _EditItemState createState() => _EditItemState();
+  _EditItemState createState() =>
+      _EditItemState(this.idItem, this.kode, this.merk);
 }
 
 class _EditItemState extends State<EditItem> {
-  final kodeController = TextEditingController();
-  final merkController = TextEditingController();
-
+  TextEditingController idItemController = TextEditingController();
+  TextEditingController kodeController = TextEditingController();
+  TextEditingController merkController = TextEditingController();
+  String cek;
   @override
   void dispose() {
     kodeController.dispose();
@@ -23,24 +27,28 @@ class _EditItemState extends State<EditItem> {
     super.dispose();
   }
 
+  _EditItemState(String idItem, String kode, String merk) {
+    if (kode != null) {
+      idItemController.text = idItem;
+      kodeController.text = kode;
+      merkController.text = merk;
+      cek = "a";
+    } else {
+      cek = "nol";
+    }
+  }
+
   @override
   void initState() {
-    if (widget.item == null) {
+    if (cek == "nol") {
       //New Record
       kodeController.text = "";
       merkController.text = "";
-      new Future.delayed(Duration.zero, () {
-        final itemProvider = Provider.of<ItemProvider>(context, listen: false);
-        itemProvider.loadValues(Item());
-      });
     } else {
-      //Controller Update
-      kodeController.text = widget.item.kode;
-      merkController.text = widget.item.merk;
-      //State Update
       new Future.delayed(Duration.zero, () {
         final itemProvider = Provider.of<ItemProvider>(context, listen: false);
-        itemProvider.loadValues(widget.item);
+        itemProvider.loadValues(
+            idItemController.text, kodeController.text, merkController.text);
       });
     }
 
@@ -64,7 +72,13 @@ class _EditItemState extends State<EditItem> {
             TextField(
               controller: kodeController,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Kode'),
+              decoration: new InputDecoration(
+                hintText: 'Kode',
+                labelText: 'Masukkan Kode',
+                icon: Icon(Icons.create),
+                border: OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(5.0)),
+              ),
               onChanged: (value) {
                 itemProvider.changeKode(value);
               },
@@ -72,7 +86,13 @@ class _EditItemState extends State<EditItem> {
             TextField(
               controller: merkController,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Merk'),
+              decoration: new InputDecoration(
+                hintText: 'Merk',
+                labelText: 'Masukkan Merk',
+                icon: Icon(Icons.create),
+                border: OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(5.0)),
+              ),
               onChanged: (value) {
                 itemProvider.changeMerk(value);
               },
@@ -83,7 +103,7 @@ class _EditItemState extends State<EditItem> {
             ElevatedButton(
               child: Text('Save'),
               onPressed: () {
-                itemProvider.saveItem();
+                itemProvider.saveItem(cek);
                 Navigator.of(context).pop();
               },
             ),

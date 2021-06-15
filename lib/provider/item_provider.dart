@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:uas_safira/service/firestore_service.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uas_safira/models/item.dart';
+import 'package:uas_safira/sign_in.dart';
 
 class ItemProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
   String _itemId;
   String _kode;
   String _merk;
+  String _userId;
   var uuid = Uuid();
 
   //Getters
@@ -25,22 +27,29 @@ class ItemProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  changeUser() {
+    _userId = uid;
+    notifyListeners();
+  }
+
   //read
-  loadValues(Item item) {
-    _itemId = item.itemId;
-    _kode = item.kode;
-    _merk = item.merk;
+  loadValues(String itemId, String kode, String merk) {
+    _itemId = itemId;
+    _kode = kode;
+    _merk = merk;
   }
 
 //create/update
-  saveItem() {
+  saveItem(String a) {
     print(_itemId);
-    if (_itemId == null) {
-      var newItem = Item(kode: kode, merk: merk, itemId: uuid.v4());
+    if (a == "nol") {
+      var newItem =
+          Item(kode: kode, merk: merk, userId: uid, itemId: uuid.v4());
       firestoreService.saveItem(newItem);
     } else {
       //Update
-      var updatedItem = Item(kode: _kode, merk: _merk, itemId: _itemId);
+      var updatedItem =
+          Item(kode: _kode, merk: _merk, userId: uid, itemId: _itemId);
       firestoreService.saveItem(updatedItem);
     }
   }

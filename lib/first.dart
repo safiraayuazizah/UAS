@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uas_safira/first_screen.dart';
 import 'package:uas_safira/routes.dart';
 import 'package:uas_safira/items.dart';
 import 'package:uas_safira/kategoris.dart';
@@ -54,6 +55,12 @@ class First extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
+            ),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text('Profile'),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => FirstScreen())),
             ),
             ListTile(
               leading: Icon(Icons.create),

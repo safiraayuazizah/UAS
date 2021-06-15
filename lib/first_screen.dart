@@ -12,7 +12,7 @@ class FirstScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [Colors.blue[100], Colors.blue[400]],
+            colors: [Colors.grey[400], Colors.grey],
           ),
         ),
         child: Center(
@@ -33,13 +33,13 @@ class FirstScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54),
+                    color: Colors.black),
               ),
               Text(
                 email,
                 style: TextStyle(
                     fontSize: 25,
-                    color: Colors.deepPurple,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),

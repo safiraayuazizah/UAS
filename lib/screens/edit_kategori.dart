@@ -4,21 +4,29 @@ import 'package:provider/provider.dart';
 import 'package:uas_safira/provider/kategori_provider.dart';
 
 class EditKategori extends StatefulWidget {
-  final Kategori kategori;
+  Kategori kategori;
+  final String kategoriId;
+  final String kode;
+  final String nama;
+  final int stok;
+  final int ukuran;
+  final String warna;
 
-  EditKategori([this.kategori]);
-
+  EditKategori(this.kategoriId, this.kode, this.nama, this.stok, this.ukuran,
+      this.warna);
   @override
-  _EditKategoriState createState() => _EditKategoriState();
+  _EditKategoriState createState() => _EditKategoriState(this.kategoriId,
+      this.kode, this.nama, this.stok, this.ukuran, this.warna);
 }
 
 class _EditKategoriState extends State<EditKategori> {
-  final kodeController = TextEditingController();
-  final namaController = TextEditingController();
-  final stokController = TextEditingController();
-  final ukuranController = TextEditingController();
-  final warnaController = TextEditingController();
-
+  TextEditingController kategoriIdController = TextEditingController();
+  TextEditingController kodeController = TextEditingController();
+  TextEditingController namaController = TextEditingController();
+  TextEditingController stokController = TextEditingController();
+  TextEditingController ukuranController = TextEditingController();
+  TextEditingController warnaController = TextEditingController();
+  String cek;
   @override
   void dispose() {
     kodeController.dispose();
@@ -29,32 +37,40 @@ class _EditKategoriState extends State<EditKategori> {
     super.dispose();
   }
 
+  _EditKategoriState(String kategoriId, String kode, String nama, int stok,
+      int ukuran, String warna) {
+    if (kode != null) {
+      kategoriIdController.text = kategoriId;
+      kodeController.text = kode;
+      namaController.text = nama;
+      stokController.text = stok.toString();
+      ukuranController.text = ukuran.toString();
+      warnaController.text = warna;
+      cek = "a";
+    } else {
+      cek = "nol";
+    }
+  }
   @override
   void initState() {
-    if (widget.kategori == null) {
+    if (cek == "nol") {
       //New Record
       kodeController.text = "";
       namaController.text = "";
       stokController.text = "";
       ukuranController.text = "";
       warnaController.text = "";
-      new Future.delayed(Duration.zero, () {
-        final kategoriProvider =
-            Provider.of<KategoriProvider>(context, listen: false);
-        kategoriProvider.loadValues(Kategori());
-      });
     } else {
-      //Controller Update
-      kodeController.text = widget.kategori.kode;
-      namaController.text = widget.kategori.nama;
-      stokController.text = widget.kategori.stok.toString();
-      ukuranController.text = widget.kategori.ukuran.toString();
-      warnaController.text = widget.kategori.warna;
-      //State Update
       new Future.delayed(Duration.zero, () {
         final kategoriProvider =
             Provider.of<KategoriProvider>(context, listen: false);
-        kategoriProvider.loadValues(widget.kategori);
+        kategoriProvider.loadValues(
+            kategoriIdController.text,
+            kodeController.text,
+            namaController.text,
+            int.parse(stokController.text),
+            int.parse(ukuranController.text),
+            warnaController.text);
       });
     }
 
@@ -115,11 +131,11 @@ class _EditKategoriState extends State<EditKategori> {
             ElevatedButton(
               child: Text('Save'),
               onPressed: () {
-                kategoriProvider.saveKategori();
+                kategoriProvider.saveKategori(cek);
                 Navigator.of(context).pop();
               },
             ),
-            (widget.kategori != null)
+            (cek != "nol")
                 ? ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.red,
