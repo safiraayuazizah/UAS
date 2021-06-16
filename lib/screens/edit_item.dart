@@ -69,38 +69,48 @@ class _EditItemState extends State<EditItem> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            TextField(
-              controller: kodeController,
-              keyboardType: TextInputType.text,
-              decoration: new InputDecoration(
-                hintText: 'Kode',
-                labelText: 'Masukkan Kode',
-                icon: Icon(Icons.create),
-                border: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(5.0)),
+            Padding(
+              padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+              child: TextField(
+                controller: kodeController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  hintText: 'Kode',
+                  labelText: 'Masukkan Kode',
+                  icon: Icon(Icons.create),
+                  border: OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(5.0)),
+                ),
+                onChanged: (value) {
+                  itemProvider.changeKode(value);
+                },
               ),
-              onChanged: (value) {
-                itemProvider.changeKode(value);
-              },
             ),
-            TextField(
-              controller: merkController,
-              keyboardType: TextInputType.text,
-              decoration: new InputDecoration(
-                hintText: 'Merk',
-                labelText: 'Masukkan Merk',
-                icon: Icon(Icons.create),
-                border: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(5.0)),
+            Padding(
+              padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+              child: TextField(
+                controller: merkController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  hintText: 'Merk',
+                  labelText: 'Masukkan Merk',
+                  icon: Icon(Icons.create),
+                  border: OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(5.0)),
+                ),
+                onChanged: (value) {
+                  itemProvider.changeMerk(value);
+                },
               ),
-              onChanged: (value) {
-                itemProvider.changeMerk(value);
-              },
             ),
             SizedBox(
               height: 20.0,
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey[400],
+                onPrimary: Colors.black,
+              ),
               child: Text('Save'),
               onPressed: () {
                 itemProvider.saveItem(cek);

@@ -56,6 +56,7 @@ class _ItemsState extends State<Items> {
                               DocumentSnapshot data = snapshot.data.docs[index];
                               return ListTile(
                                 title: Text(data['kode']),
+                                subtitle: Text("Merk: " + data['merk']),
                                 trailing: GestureDetector(
                                   child: Icon(Icons.delete),
                                   onTap: () {

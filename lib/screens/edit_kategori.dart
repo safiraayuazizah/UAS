@@ -91,44 +91,88 @@ class _EditKategoriState extends State<EditKategori> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            TextField(
-              controller: kodeController,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Kode'),
-              onChanged: (value) {
-                kategoriProvider.changeKode(value);
-              },
-            ),
-            TextField(
-              controller: namaController,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Nama'),
-              onChanged: (value) {
-                kategoriProvider.changeNama(value);
-              },
-            ),
-            TextField(
-              controller: stokController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(hintText: 'Stok'),
-              onChanged: (value) => kategoriProvider.changeStok(value),
-            ),
-            TextField(
-              controller: ukuranController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(hintText: 'Ukuran'),
-              onChanged: (value) => kategoriProvider.changeUkuran(value),
-            ),
-            TextField(
-              controller: warnaController,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(hintText: 'Warna'),
-              onChanged: (value) => kategoriProvider.changeWarna(value),
-            ),
+            Padding(
+                padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                child: TextField(
+                  controller: kodeController,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    hintText: 'Kode',
+                    labelText: 'Masukkan Kode',
+                    icon: Icon(Icons.create),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                  onChanged: (value) {
+                    kategoriProvider.changeKode(value);
+                  },
+                )),
+            Padding(
+                padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                child: TextField(
+                  controller: namaController,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    hintText: 'Nama',
+                    labelText: 'Masukkan Nama',
+                    icon: Icon(Icons.create),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                  onChanged: (value) {
+                    kategoriProvider.changeNama(value);
+                  },
+                )),
+            Padding(
+                padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                child: TextField(
+                  controller: stokController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: 'Stok',
+                    labelText: 'Masukkan Stok',
+                    icon: Icon(Icons.create),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                  onChanged: (value) => kategoriProvider.changeStok(value),
+                )),
+            Padding(
+                padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                child: TextField(
+                  controller: ukuranController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    hintText: 'Ukuran',
+                    labelText: 'Masukkan Ukuran',
+                    icon: Icon(Icons.create),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                  onChanged: (value) => kategoriProvider.changeUkuran(value),
+                )),
+            Padding(
+                padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                child: TextField(
+                  controller: warnaController,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    hintText: 'Warna',
+                    labelText: 'Masukkan Warna',
+                    icon: Icon(Icons.create),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                  onChanged: (value) => kategoriProvider.changeWarna(value),
+                )),
             SizedBox(
               height: 20.0,
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey[400],
+                onPrimary: Colors.black,
+              ),
               child: Text('Save'),
               onPressed: () {
                 kategoriProvider.saveKategori(cek);

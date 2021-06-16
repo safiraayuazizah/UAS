@@ -57,6 +57,14 @@ class _KategorisState extends State<Kategoris> {
                               DocumentSnapshot data = snapshot.data.docs[index];
                               return ListTile(
                                 title: Text(data['kode']),
+                                subtitle: Text("Nama: " +
+                                    data['nama'] +
+                                    "  Stock: " +
+                                    data['stok'].toString() +
+                                    "  Ukuran: " +
+                                    data['ukuran'].toString() +
+                                    "  Warna: " +
+                                    data['warna']),
                                 trailing: GestureDetector(
                                   child: Icon(Icons.delete),
                                   onTap: () {
